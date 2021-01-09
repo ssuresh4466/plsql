@@ -1,0 +1,146 @@
+SQL> -- we should not create tables as our own
+SQL> -- we should create acc. to client req.
+SQL> -- to create table , we should meet client req.
+SQL> -- acc. to info. related to his business.
+SQL> --what is data model ?
+
+
+
+
+
+
+SQL> -- the input for business developement is called data model.
+SQL> -- based on data model, we need to start developement.
+SQL> --data model rep[resents the business in a graphical diag.
+SQL> --fig.
+SQL> --Data Model : input for business developement in a graphical representation.
+SQL> -- objects represents in the form of rectangle.
+SQL> --properties represents in the form of ellipse/ovels.
+SQL> -- relation b/w 2 objects represents with rombhus.
+SQL> --generally data model designed by data base designers who has more exp. >10years.
+SQL> -- then developers can start development like creating tables and inserting data.
+SQL> -- if we know primary key and foriegn key then we can easily able to draw ER diag. for any number of objects.
+SQL> --This is real time project data model.
+
+SQL> --object names are tables.
+SQL> --property names are column names.
+SQL> --DDL Commands
+SQL> --CREATE : used to create any database objects liike tables, views, indexes, sequences, synonyms, users.
+SQL> --logged into db
+SQL> -- and againen logged into local user.
+SQL> create user suresh identified by Target@80
+  2  quota 100 M on users;
+create user suresh identified by Target@80
+                                       *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SQL> create user suresh identified by Target
+  2  quota 100 M on users;
+
+User created.
+
+SQL> grant resource, connect to suresh;
+
+Grant succeeded.
+
+SQL> connect suresh/Target@orclpdb;
+ERROR:
+ORA-12154: TNS:could not resolve the connect identifier specified 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect SYS/SYS;
+ERROR:
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER 
+
+
+SQL> connect SYSTEM/SYS;
+Connected.
+SQL> connect suresh/Target@orclpdb;
+ERROR:
+ORA-12154: TNS:could not resolve the connect identifier specified 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> -- i am not understanding all these user connections.
+SQL> connect suresh/Target
+Connected.
+SQL> show user;
+USER is "SURESH"
+SQL> show con_name;
+concat "." (hex 2e)
+SP2-0158: unknown SHOW option "_name"
+SQL> -- actually here we should get container name but i am unable to connect orclpdb.
+SQL> select * from tab;
+
+no rows selected
+
+SQL> --creating 1st table.
+SQL> CREATE TABLE EMPS
+  2  (
+  3  EMPID NUMBER(3),
+  4  ENAME VRACHAR2(14),
+  5  SALARY NUMBER(5),
+  6  DESG VARCHAR2(15),
+  7  JOINDATE DATE
+  8  );
+ENAME VRACHAR2(14),
+              *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE EMPS
+  2  (
+  3  EMPID NUMBER(3),
+  4  ENAME VARCHAR2(14),
+  5  SALARY NUMBER(5),
+  6  DESG VARCHAR2(15),
+  7  JOINDATE DATE
+  8  );
+
+Table created.
+
+SQL> -- BEFORE SPECIFYING TABLE NAMES AND COLUMN NAMES WE SHOULD FOLLOW SOME RULES.
+SQL> --FIG.
+SQL> --MIN LEAGTH SHOULD BE 1 CHAR, AND MAX LENGTH SHOULD BE 30 CHAR.
+SQL> --WE CAN USE A-Z, a-z, 0-9, @,$,# AND _.
+SQL> --BUT BETTER TO AVOID @,$,#
+SQL> -- DATA TYPE : THE TYPE OF DATA WHICH WILL BE ALLOWED INTO COLUMN.
+SQL> --IN GENERAL, IN WORLD WE HAVE 4 DATA TYPES AS SHOWN IN FIG.
+SQL> --FIG.
+SQL> --FIXED LENGTH CHAR VALUE, EX: PANCARD NUMBER. LENGTH IS SAME FOR ALL PEOPLE.
+SQL> --ACCOUNT NUMBERS FOR SAME BANK IS OF SAME LENGTH, ID CARD NUMBERS.
+SQL> -- FOR VARCHAR2 DATATYPE, ONLY EXISTING DATA MEMORY WILL BE ALLOCATED , THERE IS NO MEMORY WASTAGE HERE LIKE CHAR DATATYPE.
+SQL> -- IF WE WANT TO USE ANY OTHER LANGUAGE OTHER THAN ENGLISH WE CAN USE NCHAR.
+SQL> --NVARCHAR2 IS SAME AS VARCHAR2 BUT SUPPORTS ALL LANGUAGES.
+SQL>  --PRECISSION: MAX LENGTH OF COMPLETE VALUE
+SQL> --SCALE : MAX LENGTH OF DECIMAL VALUE.
+SQL> --DATE DATATYPE.
+SQL> -- IF WE WANT DATE AS PER OUR REQUIREMENT , WE CAN GIVE DATATYPE AS CHAR DATATYPE.
+SQL> --MOVIE CAN BE STORED USING BFILE EVEN IT IS >4GB.
+SQL> --WILL BE SAVED IN EXTERNAL FILE, LIKE HARD DISK.
+SQL> --BFILE IS LIKE A POINTER, WE CAN READ AND WRITE THROUGHT BFILE WHICH GIVES LOCATION OF EXTERNAL FILE.
+SQL> SPOOL OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
